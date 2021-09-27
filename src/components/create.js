@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
-import { Button, Form } from 'semantic-ui-react'
+import { Button, Form } from 'semantic-ui-react';
+import axios from 'axios';
+
 
 export default function Create() {
 
@@ -12,13 +14,16 @@ export default function Create() {
     const [team, setTeam] = useState('');
 
     const postData = () => {
-        console.log(name);
-        console.log(email);
-        console.log(CPF);
-        console.log(birthdate);
-        console.log(startDate);
-        console.log(gender);
-        console.log(team);
+        axios.post(`https://6151da0a4a5f22001701d4da.mockapi.io/nutemployee`,
+        {
+            name,
+            email,
+            CPF,
+            birthdate,
+            startDate,
+            gender,
+            team,
+        })
     }
 
     return (
@@ -61,7 +66,7 @@ export default function Create() {
                         <option value="backend">Backend</option>
                     </select>
                 </Form.Field>
-                <Button  onClick={postData} type='submit'>Submit</Button>
+                <Button onClick={postData} type='submit'>Submit</Button>
             </Form>
         </div>
     )
