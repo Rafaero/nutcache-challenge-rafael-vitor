@@ -6,6 +6,20 @@ import axios from 'axios';
 
 export default function Read() {
 
+    const getData = () => {
+        axios.get(`https://6151da0a4a5f22001701d4da.mockapi.io/nutemployee/`)
+            .then((getData) => {
+                setAPIData(getData.data);
+            })
+    }
+
+    const onDelete = (id) => {
+        axios.delete(`https://6151da0a4a5f22001701d4da.mockapi.io/nutemployee/${id}`)
+            .then(() => {
+                getData();
+            })
+    }
+
     const [APIData, setAPIData] = useState([]);
 
     useEffect(() => {
@@ -16,7 +30,7 @@ export default function Read() {
     }, []);
 
     const setData = (data) => {
-        let { id, name, email, CPF, birthdate, startDate, gender, team} = data;
+        let { id, name, email, CPF, birthdate, startDate, gender, team } = data;
         localStorage.setItem('ID', id);
         localStorage.setItem('Name', name);
         localStorage.setItem('Email', email);
@@ -25,7 +39,7 @@ export default function Read() {
         localStorage.setItem('Start date', startDate);
         localStorage.setItem('Gender', gender);
         localStorage.setItem('Team', team);
-     }
+    }
 
     return (
         <div>
@@ -39,7 +53,6 @@ export default function Read() {
                         <Table.HeaderCell>Start date</Table.HeaderCell>
                         <Table.HeaderCell>Gender</Table.HeaderCell>
                         <Table.HeaderCell>Team</Table.HeaderCell>
-                        <Table.HeaderCell>Update</Table.HeaderCell>
                     </Table.Row>
                 </Table.Header>
 
@@ -59,6 +72,9 @@ export default function Read() {
                                         <Button onClick={() => setData(data)}>Update</Button>
                                     </Table.Cell>
                                 </Link>
+                                <Table.Cell>
+                                    <Button onClick={() => onDelete(data.id)}>Delete</Button>
+                                </Table.Cell>
                             </Table.Row>
                         )
                     })}
