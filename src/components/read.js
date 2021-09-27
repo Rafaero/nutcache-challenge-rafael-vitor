@@ -53,6 +53,11 @@ export default function Read() {
                         <Table.HeaderCell>Start date</Table.HeaderCell>
                         <Table.HeaderCell>Gender</Table.HeaderCell>
                         <Table.HeaderCell>Team</Table.HeaderCell>
+                        <Link to="/create">
+                                    <Table.Cell>
+                                        <Button>Create</Button>
+                                    </Table.Cell>
+                                </Link>
                     </Table.Row>
                 </Table.Header>
 
@@ -67,11 +72,7 @@ export default function Read() {
                                 <Table.Cell>{data.startDate}</Table.Cell>
                                 <Table.Cell>{data.gender}</Table.Cell>
                                 <Table.Cell>{data.team}</Table.Cell>
-                                <Link to="/create">
-                                    <Table.Cell>
-                                        <Button>Create</Button>
-                                    </Table.Cell>
-                                </Link>
+            
                                 <Link to="/update">
                                     <Table.Cell>
                                         <Button onClick={() => setData(data)}>Update</Button>
