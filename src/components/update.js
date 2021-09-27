@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Button, Form } from 'semantic-ui-react';
 import axios from 'axios';
-
+import { useHistory } from 'react-router';
 
 export default function Update() {
+
+    let history = useHistory();
 
     const [id, setID] = useState(null);
 
@@ -16,6 +18,8 @@ export default function Update() {
             startDate,
             gender,
             team
+        }).then(() => {
+            history.push('/')
         })
     }
 

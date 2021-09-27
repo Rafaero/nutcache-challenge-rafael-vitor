@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
 import { Button, Form } from 'semantic-ui-react';
 import axios from 'axios';
+import { useHistory } from 'react-router';
 
 
 export default function Create() {
+
+    let history = useHistory();
 
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
@@ -23,6 +26,8 @@ export default function Create() {
             startDate,
             gender,
             team,
+        }).then(() => {
+            history.push('/')
         })
     }
 

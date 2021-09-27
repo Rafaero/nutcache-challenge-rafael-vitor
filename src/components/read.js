@@ -7,7 +7,7 @@ import axios from 'axios';
 export default function Read() {
 
     const getData = () => {
-        axios.get(`https://6151da0a4a5f22001701d4da.mockapi.io/nutemployee/`)
+        axios.get(`https://6151da0a4a5f22001701d4da.mockapi.io/nutemployee`)
             .then((getData) => {
                 setAPIData(getData.data);
             })
@@ -67,6 +67,11 @@ export default function Read() {
                                 <Table.Cell>{data.startDate}</Table.Cell>
                                 <Table.Cell>{data.gender}</Table.Cell>
                                 <Table.Cell>{data.team}</Table.Cell>
+                                <Link to="/create">
+                                    <Table.Cell>
+                                        <Button>Create</Button>
+                                    </Table.Cell>
+                                </Link>
                                 <Link to="/update">
                                     <Table.Cell>
                                         <Button onClick={() => setData(data)}>Update</Button>
