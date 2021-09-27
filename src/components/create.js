@@ -59,16 +59,16 @@ export default function Create() {
                     </div>
 
                     <label>Gender: </label>
-                    <select class="ui dropdown">
+                    <select onClick={e => setGender(e.target.value)} class="ui dropdown">
                         <label>Start date: </label>
-                        <option value="1">Male</option>
-                        <option value="0">Female</option>
+                        <option value={"Male"}>Male</option>
+                        <option value={"Female"}>Female</option>
                     </select>
                     <label>Team: </label>
-                    <select class="ui dropdown">
-                        <option value="Mobile">Mobile</option>
-                        <option value="frontend">Frontend</option>
-                        <option value="backend">Backend</option>
+                    <select onClick={e => setTeam(e.target.value)} class="ui dropdown">
+                        <option value={"Mobile"}>Mobile</option>
+                        <option value={"Frontend"}>Frontend</option>
+                        <option value={"Backend"}>Backend</option>
                     </select>
                 </Form.Field>
                 <Button onClick={postData} type='submit'>Submit</Button>
