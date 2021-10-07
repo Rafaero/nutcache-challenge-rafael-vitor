@@ -17,18 +17,21 @@ export default function Create() {
     const [team, setTeam] = useState('');
 
     const postData = () => {
-        axios.post(`https://6151da0a4a5f22001701d4da.mockapi.io/nutemployee`,
-        {
-            name,
-            email,
-            CPF,
-            birthdate,
-            startDate,
-            gender,
-            team,
-        }).then(() => {
-            history.push('/')
-        })
+
+        if (name !== "" && email !== "" && CPF !== "" && birthdate !== "" && startDate !== "") {
+            axios.post(`https://6151da0a4a5f22001701d4da.mockapi.io/nutemployee`,
+                {
+                    name,
+                    email,
+                    CPF,
+                    birthdate,
+                    startDate,
+                    gender,
+                    team,
+                }).then(() => {
+                    history.push('/')
+                })
+        }
     }
 
     return (
@@ -37,24 +40,24 @@ export default function Create() {
                 <Form.Field>
 
                     <label>Name: </label>
-                    <input placeholder='Name' onChange={(e) => setName(e.target.value)} />
+                    <input placeholder='Name' required onChange={(e) => setName(e.target.value)} />
                     <label>Email: </label>
-                    <input placeholder='Email' onChange={(e) => setEmail(e.target.value)} />
+                    <input placeholder='Email' required type="email" onChange={(e) => setEmail(e.target.value)} />
                     <label>CPF: </label>
-                    <input placeholder='CPF' onChange={(e) => setCPF(e.target.value)} />
+                    <input placeholder='CPF' required onChange={(e) => setCPF(e.target.value)} />
 
                     <label>Birthdate: </label>
                     <div class="ui calendar" id="example1">
                         <div class="ui input left icon">
                             <i class="calendar icon"></i>
-                            <input type="date" placeholder="Date" onChange={(e) => setBirthdate(e.target.value)} />
+                            <input required type="date" placeholder="Date" onChange={(e) => setBirthdate(e.target.value)} />
                         </div>
                     </div>
                     <label>Start date: </label>
                     <div class="ui calendar" id="example1">
                         <div class="ui input left icon">
                             <i class="calendar icon"></i>
-                            <input type="date" placeholder="Date" onChange={(e) => setStartDate(e.target.value)} />
+                            <input required type="date" placeholder="Date" onChange={(e) => setStartDate(e.target.value)} />
                         </div>
                     </div>
 

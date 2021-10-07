@@ -10,17 +10,20 @@ export default function Update() {
     const [id, setID] = useState(null);
 
     const updateAPIData = () => {
-        axios.put(`https://6151da0a4a5f22001701d4da.mockapi.io/nutemployee/${id}`, {
-            name,
-            email,
-            CPF,
-            birthdate,
-            startDate,
-            gender,
-            team
-        }).then(() => {
-            history.push('/')
-        })
+
+        if (name !== "" && email !== "" && CPF !== "" && birthdate !== "" && startDate !== "") {
+            axios.put(`https://6151da0a4a5f22001701d4da.mockapi.io/nutemployee/${id}`, {
+                name,
+                email,
+                CPF,
+                birthdate,
+                startDate,
+                gender,
+                team
+            }).then(() => {
+                history.push('/')
+            })
+        }
     }
 
     useEffect(() => {
@@ -49,24 +52,24 @@ export default function Update() {
                 <Form.Field>
 
                     <label>Name: </label>
-                    <input placeholder='Name' value={name} onChange={(e) => setName(e.target.value)} />
+                    <input placeholder='Name' required value={name} onChange={(e) => setName(e.target.value)} />
                     <label>Email: </label>
-                    <input placeholder='Email' value={email} onChange={(e) => setEmail(e.target.value)} />
+                    <input placeholder='Email' type="email" required value={email} onChange={(e) => setEmail(e.target.value)} />
                     <label>CPF: </label>
-                    <input placeholder='CPF' value={CPF} onChange={(e) => setCPF(e.target.value)} />
+                    <input placeholder='CPF' required value={CPF} onChange={(e) => setCPF(e.target.value)} />
 
                     <label>Birthdate: </label>
                     <div class="ui calendar" id="example1">
                         <div class="ui input left icon">
                             <i class="calendar icon"></i>
-                            <input type="date" placeholder="Date" value={birthdate} onChange={(e) => setBirthdate(e.target.value)} />
+                            <input type="date" required placeholder="Date" value={birthdate} onChange={(e) => setBirthdate(e.target.value)} />
                         </div>
                     </div>
                     <label>Start date: </label>
                     <div class="ui calendar" id="example1">
                         <div class="ui input left icon">
                             <i class="calendar icon"></i>
-                            <input type="date" placeholder="Date" value={startDate} onChange={(e) => setStartDate(e.target.value)} />
+                            <input type="date" required placeholder="Date" value={startDate} onChange={(e) => setStartDate(e.target.value)} />
                         </div>
                     </div>
 
@@ -83,7 +86,7 @@ export default function Update() {
                         <option value={"Backend"}>Backend</option>
                     </select>
                 </Form.Field>
-                    <Button onClick={updateAPIData} type='submit'>Update</Button>
+                <Button onClick={updateAPIData} type='submit'>Update</Button>
             </Form>
         </div>
     )
